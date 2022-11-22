@@ -1,4 +1,4 @@
-import HttpServer from './infra/express';
+import HttpServer from '@infra/http';
 
 const server = new HttpServer();
 

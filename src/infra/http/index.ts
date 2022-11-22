@@ -1,5 +1,5 @@
+import Logger from '@shared/Logger';
 import express from 'express';
-import Logger from '../../shared/logger/Logger';
 
 export default class HttpServer {
 	private app;
