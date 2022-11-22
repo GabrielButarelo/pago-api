@@ -1,5 +1,5 @@
-export default class Teste {
-  name() {
-    return 'test';
-  }
-}
+import HttpServer from './infra/express';
+
+const server = new HttpServer();
+
+server.start();
