@@ -1,5 +1,5 @@
+import { ICompanyEntity } from '@shared/interfaces/entities/ICompanyEntity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { ICompanyEntity } from './interfaces/ICompanyEntity';
 
 @Entity('companies')
 export class CompanyEntity implements ICompanyEntity {

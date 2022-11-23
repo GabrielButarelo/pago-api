@@ -1,6 +1,6 @@
 import { EPixType } from '@shared/enums/EPixType';
+import { IContactEntity } from '@shared/interfaces/entities/IContactEntity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IContactEntity } from './interfaces/IContactEntity';
 
 @Entity('contacts')
 export class ContactEntity implements IContactEntity {
