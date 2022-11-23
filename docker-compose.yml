@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  database:
+    image: postgres
+    container_name: database_pago
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - database:/var/lib/postgres/data
+
+volumes:
+  database:
+    driver: local
