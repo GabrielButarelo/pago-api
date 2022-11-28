@@ -17,6 +17,9 @@ export class CompaniesRoutes {
 		this._router.get('/list', (req, res) =>
 			this.companiesController.listAll(req, res)
 		);
+		this._router.get('/list/:id', (req, res) =>
+			this.companiesController.listById(req, res)
+		);
 	}
 
 	get router(): Router {
