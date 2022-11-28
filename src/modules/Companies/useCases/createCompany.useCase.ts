@@ -40,7 +40,6 @@ export class CreateCompanyUseCase {
 
 			await this.companiesRepository.create({
 				...data,
-				document: data.document,
 			});
 		} catch (error) {
 			throw new Error(error.message);

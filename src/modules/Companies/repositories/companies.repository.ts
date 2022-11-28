@@ -3,6 +3,7 @@ import { CompanyEntity } from '@infra/database/entities/CompanyEntity';
 import { ICompanyEntity } from '@shared/interfaces/entities/ICompanyEntity';
 import { ICompaniesRepository } from '@shared/interfaces/modules/repositories/ICompaniesRepository';
 import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompanyUseCase';
+import { IEditCompany } from '@shared/interfaces/modules/repositories/methods/IEditCompany';
 import { IGetCompaniesByColumn } from '@shared/interfaces/modules/repositories/methods/IGetCompaniesByColumn';
 import { Repository } from 'typeorm';
 
@@ -62,6 +63,18 @@ export class CompaniesRepository implements ICompaniesRepository {
 			const companies = this.repository.find();
 
 			return companies;
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	}
+
+	edit(data: IEditCompany): Promise<void> {
+		try {
+			this.repository.save({
+				...data,
+			});
+
+			return;
 		} catch (error) {
 			throw new Error(error.message);
 		}

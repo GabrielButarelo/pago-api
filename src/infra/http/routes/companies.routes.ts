@@ -12,7 +12,10 @@ export class CompaniesRoutes {
 
 	private loadRoutes() {
 		this._router.post('/create', (req, res) =>
-			this.companiesController.create(req, res)
+			this.companiesController.createCompany(req, res)
+		);
+		this._router.post('/edit', (req, res) =>
+			this.companiesController.editCompany(req, res)
 		);
 		this._router.get('/list', (req, res) =>
 			this.companiesController.listAll(req, res)
