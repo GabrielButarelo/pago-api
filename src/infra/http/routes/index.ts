@@ -1,15 +1,18 @@
 import express, { Router } from 'express';
-import CompaniesRoutes from './companies.routes';
+import { CompaniesRoutes } from './companies.routes';
 
-export default class Routes {
-	private _router: Router = express.Router();
+export class Routes {
+	private _router: Router;
 	private companiesRoutes: CompaniesRoutes;
 
 	constructor() {
 		this.companiesRoutes = new CompaniesRoutes();
+		this._router = express.Router();
+		this.loadRoutes();
+	}
 
+	private loadRoutes() {
 		this._router.use('/companies', this.companiesRoutes.router);
-		// this._router.use('/contacts');
 	}
 
 	get router(): Router {

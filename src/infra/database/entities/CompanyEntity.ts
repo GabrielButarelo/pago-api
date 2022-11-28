@@ -1,10 +1,10 @@
-import { ICompanyEntity } from '@shared/interfaces/entities/ICompanyEntity';
+import { ICompanyEntity } from '../../../shared/interfaces/entities/ICompanyEntity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('companies')
 export class CompanyEntity implements ICompanyEntity {
 	@PrimaryGeneratedColumn()
-	id: string;
+	id: number;
 
 	@Column({
 		type: 'varchar',
@@ -22,7 +22,7 @@ export class CompanyEntity implements ICompanyEntity {
 		type: 'varchar',
 		nullable: false,
 	})
-	responsibleName: string;
+	responsible_name: string;
 
 	@Column({
 		type: 'varchar',
@@ -40,17 +40,17 @@ export class CompanyEntity implements ICompanyEntity {
 		type: 'date',
 		nullable: false,
 	})
-	createdAt: Date;
+	created_at: Date;
 
 	@Column({
 		type: 'date',
 		nullable: false,
 	})
-	updatedAt: Date;
+	updated_at: Date;
 
 	@Column({
 		type: 'date',
-		nullable: false,
+		nullable: true,
 	})
-	deletedAt: Date;
+	deleted_at: Date | null;
 }

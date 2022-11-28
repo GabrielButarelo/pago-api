@@ -2,16 +2,31 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import cors from 'cors';
-import Routes from './routes';
 import Logger from '@shared/utils/Logger';
+import { Routes } from './routes';
 
-export default class HttpServer {
+export class HttpServer {
 	private app;
 	private port: number;
+	private routesApi: Routes;
 
 	constructor() {
 		this.app = express();
 
+		this.routesApi = new Routes();
+
+		this.middlewares();
+	}
+
+	start() {
+		this.port = Number(process.env.API_PORT) || 3000;
+
+		this.app.listen(this.port, () => {
+			Logger.info('✅ Server is running!');
+		});
+	}
+
+	private middlewares() {
 		this.app.use(express.json());
 		this.app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -23,20 +38,6 @@ export default class HttpServer {
 
 		this.app.use(morgan('tiny'));
 
-		this.routes();
-	}
-
-	start() {
-		this.port = Number(process.env.API_PORT) || 3000;
-
-		this.app.listen(this.port, () => {
-			Logger.info('✅ Server is running!');
-		});
-	}
-
-	private routes() {
-		const routes = new Routes();
-
-		this.app.use('/api', routes.router);
+		this.app.use('/api', this.routesApi.router);
 	}
 }
