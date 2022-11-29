@@ -20,7 +20,7 @@ export class ContactsRoutes {
 		this._router.get('/list', (req, res) =>
 			this.contactsController.listAll(req, res)
 		);
-		this._router.get('/delete/:id', (req, res) =>
+		this._router.delete('/delete/:id', (req, res) =>
 			this.contactsController.deleteById(req, res)
 		);
 	}

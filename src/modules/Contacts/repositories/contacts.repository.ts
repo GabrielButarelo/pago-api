@@ -79,4 +79,19 @@ export class ContactsRepository implements IContactsRepository {
 			throw new Error(error.message);
 		}
 	}
+
+	deleteContactById(id: number): Promise<void> {
+		try {
+			this.repository.query(
+				`
+				DELETE FROM contacts
+				WHERE id = ${id}
+			`
+			);
+
+			return;
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	}
 }

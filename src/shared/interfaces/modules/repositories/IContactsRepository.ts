@@ -10,4 +10,5 @@ export interface IContactsRepository {
 		data: IGetContactsByColumn
 	): Promise<IContactEntity[] | IContactEntity>;
 	editContact(data: IEditContact): Promise<void>;
+	deleteContactById(id: number): Promise<void>;
 }
