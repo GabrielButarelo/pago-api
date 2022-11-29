@@ -3,7 +3,7 @@ import { IBaseEntity } from './IBaseEntity';
 export interface ICompanyEntity extends IBaseEntity {
 	name: string;
 	document: string;
-	responsibleName: string;
+	responsible_name: string;
 	email: string;
 	phone: string;
 }

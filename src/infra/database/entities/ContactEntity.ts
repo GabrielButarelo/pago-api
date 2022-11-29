@@ -1,17 +1,17 @@
-import { EPixType } from '@shared/enums/EPixType';
-import { IContactEntity } from '@shared/interfaces/entities/IContactEntity';
+import { EPixType } from '../../../shared/enums/EPixType';
+import { IContactEntity } from '../../../shared/interfaces/entities/IContactEntity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('contacts')
 export class ContactEntity implements IContactEntity {
 	@PrimaryGeneratedColumn()
-	id: string;
+	id: number;
 
 	@Column({
-		type: 'varchar',
+		type: 'int',
 		nullable: false,
 	})
-	companyId: string;
+	company_id: number;
 
 	@Column({
 		type: 'varchar',
@@ -35,17 +35,17 @@ export class ContactEntity implements IContactEntity {
 		type: 'varchar',
 		nullable: false,
 	})
-	createdAt: Date;
+	created_at: Date;
 
 	@Column({
 		type: 'varchar',
 		nullable: false,
 	})
-	updatedAt: Date;
+	updated_at: Date;
 
 	@Column({
 		type: 'varchar',
-		nullable: false,
+		nullable: true,
 	})
-	deletedAt: Date;
+	deleted_at: Date | null;
 }

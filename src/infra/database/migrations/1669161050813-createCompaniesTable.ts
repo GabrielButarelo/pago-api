@@ -6,13 +6,13 @@ export class createCompaniesTable1669161050813 implements MigrationInterface {
 			CREATE TABLE companies (
 				id SERIAL NOT NULL PRIMARY KEY,
 				name VARCHAR(255) NOT NULL,
-				document VARCHAR(14) NOT NULL,
-				responsibleName VARCHAR(255) NOT NULL,
+				document VARCHAR(20) NOT NULL,
+				responsible_name VARCHAR(255) NOT NULL,
 				email VARCHAR(255) NOT NULL,
-				phone VARCHAR(13) NOT NULL,
-				createdAt DATE NOT NULL,
-				updatedAt DATE NOT NULL DEFAULT CURRENT_DATE,
-				deletedAt DATE NOT NULL
+				phone VARCHAR(20) NOT NULL,
+				created_at DATE NOT NULL,
+				updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+				deleted_at DATE
 			)
 		`);
 	}

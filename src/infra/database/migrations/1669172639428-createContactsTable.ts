@@ -5,13 +5,13 @@ export class createContactsTable1669172639428 implements MigrationInterface {
 		await queryRunner.query(`
 			CREATE TABLE contacts (
 				id SERIAL NOT NULL PRIMARY KEY,
-				companyId SERIAL NOT NULL REFERENCES companies(id),
+				company_id SERIAL NOT NULL REFERENCES companies(id),
 				name VARCHAR(255) NOT NULL,
 				key VARCHAR(255) NOT NULL,
 				type VARCHAR(255) NOT NULL CHECK (type in ('CPF', 'CNPJ', 'EMAIL', 'PHONE', 'RANDOM_KEY')),
-				createdAt DATE NOT NULL,
-				updatedAt DATE NOT NULL DEFAULT CURRENT_DATE,
-				deletedAt DATE NOT NULL
+				created_at DATE NOT NULL,
+				updated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+				deleted_at DATE
 			)
 		`);
 	}

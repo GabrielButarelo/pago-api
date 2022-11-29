@@ -2,7 +2,7 @@ import { EPixType } from '@shared/enums/EPixType';
 import { IBaseEntity } from './IBaseEntity';
 
 export interface IContactEntity extends IBaseEntity {
-	companyId: string;
+	company_id: number;
 	name: string;
 	key: string;
 	type: EPixType;
