@@ -2,7 +2,7 @@ import { appDataSource } from '@infra/database';
 import { CompanyEntity } from '@infra/database/entities/CompanyEntity';
 import { ICompanyEntity } from '@shared/interfaces/entities/ICompanyEntity';
 import { ICompaniesRepository } from '@shared/interfaces/modules/repositories/ICompaniesRepository';
-import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompanyUseCase';
+import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompany';
 import { IEditCompany } from '@shared/interfaces/modules/repositories/methods/IEditCompany';
 import { IGetCompaniesByColumn } from '@shared/interfaces/modules/repositories/methods/IGetCompaniesByColumn';
 import { Repository } from 'typeorm';
@@ -16,7 +16,7 @@ export class CompaniesRepository implements ICompaniesRepository {
 
 	async create(data: ICreateCompany): Promise<void> {
 		try {
-			const newClient = this.repository.create({
+			const newCompany = this.repository.create({
 				name: data.name,
 				phone: data.phone,
 				responsible_name: data.responsibleName,
@@ -24,7 +24,8 @@ export class CompaniesRepository implements ICompaniesRepository {
 				email: data.email,
 				created_at: new Date(),
 			});
-			await this.repository.save(newClient);
+
+			await this.repository.save(newCompany);
 
 			return;
 		} catch (error) {

@@ -2,7 +2,7 @@ import { CreateCompanyUseCase } from '@modules/Companies/useCases/createCompany.
 import { EditCompanyUseCase } from '@modules/Companies/useCases/editCompany.useCase';
 import { ListAllCompaniesUseCase } from '@modules/Companies/useCases/listAllCompanies.useCase';
 import { ListCompanyByIdUseCase } from '@modules/Companies/useCases/listCompanyById.useCase';
-import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompanyUseCase';
+import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompany';
 import { IEditCompany } from '@shared/interfaces/modules/repositories/methods/IEditCompany';
 import HttpResponse from '@shared/utils/HttpResponse';
 import { Request, Response } from 'express';

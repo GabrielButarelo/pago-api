@@ -1,4 +1,4 @@
-import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompanyUseCase';
+import { ICreateCompany } from '@shared/interfaces/modules/repositories/methods/ICreateCompany';
 import { Validators } from '@shared/utils/Validators';
 import { CompaniesRepository } from '../repositories/companies.repository';
 

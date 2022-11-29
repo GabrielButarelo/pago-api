@@ -8,10 +8,10 @@ export class ContactEntity implements IContactEntity {
 	id: number;
 
 	@Column({
-		type: 'varchar',
+		type: 'int',
 		nullable: false,
 	})
-	company_id: string;
+	company_id: number;
 
 	@Column({
 		type: 'varchar',
