@@ -3,6 +3,8 @@ import { ContactEntity } from '@infra/database/entities/ContactEntity';
 import { IContactEntity } from '@shared/interfaces/entities/IContactEntity';
 import { IContactsRepository } from '@shared/interfaces/modules/repositories/IContactsRepository';
 import { ICreateContact } from '@shared/interfaces/modules/repositories/methods/ICreateContact';
+import { IEditContact } from '@shared/interfaces/modules/repositories/methods/IEditContact';
+import { IGetContactsByColumn } from '@shared/interfaces/modules/repositories/methods/IGetContactsByColumn';
 import { Repository } from 'typeorm';
 
 export class ContactsRepository implements IContactsRepository {
@@ -35,6 +37,44 @@ export class ContactsRepository implements IContactsRepository {
 			const contacts = this.repository.find();
 
 			return contacts;
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	}
+
+	async getContactsByColumn(
+		data: IGetContactsByColumn
+	): Promise<IContactEntity[] | IContactEntity> {
+		try {
+			if (data.id) {
+				const contact = this.repository.findOne({
+					where: {
+						...data,
+					},
+				});
+
+				return contact;
+			}
+
+			const contacts = this.repository.find({
+				where: {
+					...data,
+				},
+			});
+
+			return contacts;
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	}
+
+	editContact(data: IEditContact): Promise<void> {
+		try {
+			this.repository.save({
+				...data,
+			});
+
+			return;
 		} catch (error) {
 			throw new Error(error.message);
 		}
