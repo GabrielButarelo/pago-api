@@ -4,7 +4,7 @@ Esse projeto tem como intuito a criação de um CRUD de empresas e contatos para
 
 ## Stack utilizada
 
-**Back-end:** Node, Express, Typescript, Jest, ESLint, Prettier, Docker, Husky, TypeORM e Pino.
+**Back-end:** Node (v18.2.0), Express, Typescript, Jest, ESLint, Prettier, Docker, Husky, TypeORM e Pino.
 
 **Banco de Dados:** Postgres
 
@@ -69,6 +69,9 @@ Durante o projeto pude aprender mais sobre o husky, e como ele funciona executan
 ## Melhorias
 
 - Adicionar injeção de dependencias para deixar o código mais desacoplado.
+- Adicionar jwt token para as requisições
+- Adicionar documentação das rotas
+- Adicionar testes
 
 ## Rodando os testes
 
