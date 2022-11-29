@@ -1,13 +1,16 @@
 import { CreateContactUseCase } from '@modules/Contacts/useCases/createContact.useCase';
+import { ListAllContactsUseCase } from '@modules/Contacts/useCases/listAllContacts.useCase';
 import { ICreateContact } from '@shared/interfaces/modules/repositories/methods/ICreateContact';
 import HttpResponse from '@shared/utils/HttpResponse';
 import { Request, Response } from 'express';
 
 export class ContactsController {
 	private createContactUseCase: CreateContactUseCase;
+	private listAllContactsUseCase: ListAllContactsUseCase;
 
 	constructor() {
 		this.createContactUseCase = new CreateContactUseCase();
+		this.listAllContactsUseCase = new ListAllContactsUseCase();
 	}
 
 	async createContact(req: Request, res: Response) {
@@ -30,8 +33,11 @@ export class ContactsController {
 
 	async listAll(req: Request, res: Response) {
 		try {
+			const contacts = await this.listAllContactsUseCase.execute();
+
 			return HttpResponse.send(res, {
 				status: 200,
+				data: contacts,
 			});
 		} catch (error) {
 			return HttpResponse.send(res, {

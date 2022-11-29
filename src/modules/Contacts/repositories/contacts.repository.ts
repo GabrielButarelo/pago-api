@@ -1,5 +1,6 @@
 import { appDataSource } from '@infra/database';
 import { ContactEntity } from '@infra/database/entities/ContactEntity';
+import { IContactEntity } from '@shared/interfaces/entities/IContactEntity';
 import { IContactsRepository } from '@shared/interfaces/modules/repositories/IContactsRepository';
 import { ICreateContact } from '@shared/interfaces/modules/repositories/methods/ICreateContact';
 import { Repository } from 'typeorm';
@@ -24,6 +25,16 @@ export class ContactsRepository implements IContactsRepository {
 			await this.repository.save(newContact);
 
 			return;
+		} catch (error) {
+			throw new Error(error.message);
+		}
+	}
+
+	listAllContacts(): Promise<IContactEntity[]> {
+		try {
+			const contacts = this.repository.find();
+
+			return contacts;
 		} catch (error) {
 			throw new Error(error.message);
 		}
